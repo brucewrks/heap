@@ -1,5 +1,3 @@
 module.exports = (params) => {
-  return JSON.stringify({
-    'success': true
-  });
+  return { 'success': true };
 };

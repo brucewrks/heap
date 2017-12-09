@@ -13,12 +13,11 @@ const server = http.createServer((req, res) => {
     getTasks: require('./actions/getTasks.js')
   };
 
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
+  let response = actions.getTasks();
 
-  var response = actions.getTasks();
-
-  res.end(response + '\n');
+  res.statusCode = response.success ? 200 : 500;
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify(response) + '\n');
 });
 
 server.listen(config.port, config.domain, () => {
