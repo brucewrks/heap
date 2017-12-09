@@ -10,11 +10,18 @@ class Heap {
   // Reference for Server-side Node.js processing
   public $rest_url;
 
+  // Reference for instance of \Heap\Node
+  public $node;
+
   public function __construct() {
     $this->file = __FILE__;
     $this->dir = dirname(__FILE__);
 
     spl_autoload_register(array($this, 'autoload'));
+
+    $json = file_get_contents(dirname($this->dir) . '/config.json');
+    $config = json_decode($json);
+    $this->node = new \Heap\Node($config->domain, $config->port);
 
     require_once(dirname(__FILE__) . '/includes/process.php');
   }

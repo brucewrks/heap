@@ -20,6 +20,8 @@
       Da heap
     </p>
 
+    <pre><?php var_dump(\Heap\heap()->node->getTasks()); ?></pre>
+
     <script type="application/javascript">
       (function() {
         alert('Heapy');
