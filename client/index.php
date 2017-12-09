@@ -15,6 +15,8 @@ class Heap {
     $this->dir = dirname(__FILE__);
 
     spl_autoload_register(array($this, 'autoload'));
+
+    require_once(dirname(__FILE__) . '/includes/process.php');
   }
 
   /**
@@ -36,3 +38,5 @@ $GLOBALS[__NAMESPACE__] = new Heap();
 function heap() {
   return $GLOBALS[__NAMESPACE__];
 }
+
+\Heap\load_heap();
