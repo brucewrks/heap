@@ -1,3 +1,3 @@
-module.exports = (params) => {
-  return { 'success': true };
+module.exports = (tasks) => {
+  return { success: true, response: tasks };
 };

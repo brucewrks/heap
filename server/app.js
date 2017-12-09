@@ -18,7 +18,7 @@ const actions = {
 };
 
 const apiServer = http.createServer((req, res) => {
-  let response = actions.getTasks();
+  let response = actions.getTasks(tasks);
 
   res.statusCode = response.success ? 200 : 500;
   res.setHeader('Content-Type', 'application/json');
