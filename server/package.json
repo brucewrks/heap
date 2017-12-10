@@ -1,0 +1,13 @@
+{
+	"name"        : "rito-pls",
+	"author"      : "Bruce Caldwell <bruce@myinbox.ws.com>",
+	"description" : "Personal-use task management app with relative priority.",
+	"version"     : "1.0.0",
+	"dependencies": {},
+	"repository"  : {
+		"type": "git",
+		"url" : "https://github.com/brucewsinc/heap.git"
+	},
+	"main"        : "app.js",
+	"license"     : "GPL v3"
+}
