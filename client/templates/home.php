@@ -1,13 +1,4 @@
 <?php $tasks = \Heap\heap()->node->getTasks(); ?>
-
-<?php
-$tasks->priority[] = new stdClass();
-$tasks->priority[0]->name = 'hello';
-
-// $add = \Heap\heap()->node->addTask(array('name' => 'hello'));
-// if(!$add) throw new \Heap\Error('fuck');
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,12 +12,7 @@ $tasks->priority[0]->name = 'hello';
 
       <div class="columns" style="margin-top: 1em;">
         <div class="callout primary">
-          <h1>
-            Task Heap
-            <a href="/?addTask=1" class="button success" style="font-size: 0.9rem; margin-top: 0.25em; margin-bottom: 0.25em;">
-              <i class="fa fa-plus"></i> Add New
-            </a>
-          </h1>
+          <h1>Task Heap</h1>
         </div>
       </div>
 
@@ -34,7 +20,7 @@ $tasks->priority[0]->name = 'hello';
         <h2>Priority Tasks</h2>
         <?php foreach($tasks->priority as $i => $t): ?>
           <div>
-            <h3><?php echo $t->name; ?></h3>
+            <h4><?php echo $t->name; ?></h4>
             <a href="/?action=moveUp&index=<?php echo $i; ?>" class="button success"><i class="fa fa-arrow-up"></i> Move Up</a>
             <a href="/?action=moveDown&index=<?php echo $i; ?>" class="button primary"><i class="fa fa-arrow-down"></i> Move Down</a>
             <a href="/?action=removeFromPriority&index=<?php echo $i; ?>" class="button alert"><i class="fa fa-times"></i> Remove</a>
@@ -47,12 +33,25 @@ $tasks->priority[0]->name = 'hello';
         <h2>Da Heap</h2>
         <?php foreach($tasks->heap as $i => $t): ?>
           <div>
-            <h3><?php echo $t->name; ?></h3>
+            <h4><?php echo $t->name; ?></h4>
             <a href="/?action=addToPriority&index=<?php echo $i; ?>" class="button success"><i class="fa fa-star"></i> Make Priority</a>
             <a href="/?action=removeFromHeap&index=<?php echo $i; ?>" class="button alert"><i class="fa fa-times"></i> Delete</a>
           </div>
         <?php endforeach; ?>
         <div class="clearfix"></div>
+      </div>
+
+      <div class="columns">
+        <div class="add-item">
+          <h3>Add Item to Heap</h3>
+
+          <hr />
+
+          <form method="post" action="/?action=addToHeap">
+            <textarea name="task" rows="5"></textarea>
+            <button type="submit" class="button primary">Add to Heap</button>
+          </form>
+        </div>
       </div>
     </div>
 
@@ -73,7 +72,8 @@ $tasks->priority[0]->name = 'hello';
     }
 
     .priority-shit > div:not(.clearfix),
-    .da-heap > div:not(.clearfix) {
+    .da-heap > div:not(.clearfix),
+    .add-item {
       padding: 1em;
       border: 2px solid #DDD;
       background: #FFF;
