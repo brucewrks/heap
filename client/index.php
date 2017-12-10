@@ -13,6 +13,9 @@ class Heap {
   // Reference for instance of \Heap\Node
   public $node;
 
+  /**
+   * Class constructor.
+   */
   public function __construct() {
     $this->file = __FILE__;
     $this->dir = dirname(__FILE__);
