@@ -14,6 +14,7 @@ class Actions {
     foreach($_POST as $_i => $_v) $this->_p[$_i] = trim(stripslashes($_v));
 
     if($this->action === 'addToHeap') $this->addToHeap();
+    if($this->action === 'getText') $this->getText();
   }
 
   public function addToHeap() {
@@ -22,5 +23,16 @@ class Actions {
 
     $task = new \Heap\Task($_p['task']);
     heap()->node->addTask($task);
+  }
+
+  public function getText() {
+    $_p = $this->_p;
+    if(!isset($_p['Body']) || !$_p['Body']) throw new \Heap\Error('Invalid task passed to Heap');
+
+    $task = new \Heap\Task($_p['Body']);
+    heap()->node->addTask($task);
+
+    echo 'Task added to heap.';
+    exit();
   }
 }
