@@ -32,6 +32,7 @@ class Actions {
     $task = new \Heap\Task($_p['Body']);
     heap()->node->addTask($task);
 
+    header('Content-Type: text/plain');
     echo 'Task added to heap.';
     exit();
   }
